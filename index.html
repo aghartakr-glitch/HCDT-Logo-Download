@@ -44,6 +44,10 @@ header .sub{color:var(--muted);font-size:13px;flex:1;min-width:200px}
 .dl{border:1px solid var(--fg);background:#fff;border-radius:6px;padding:6px 14px;font-size:13px;font-weight:700;white-space:nowrap}
 .dl:hover{background:var(--fg);color:#fff}
 .dl:disabled{opacity:.5}
+.gh{grid-column:1/-1;display:flex;align-items:baseline;gap:8px;border-top:1px solid var(--fg);padding-top:12px;margin-top:14px}
+.gh.first{margin-top:0}
+.gh b{font-size:15px}
+.gh small{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
 .empty{padding:60px 0;text-align:center;color:var(--muted)}
 h2{font-size:15px;margin:38px 0 14px}
 .cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
@@ -167,7 +171,15 @@ function render(){
   $('pngW').style.display=st.fmt==='png'?'':'none';
   $('oClear').checked=st.clear;$('oBg').checked=st.bg;
   const list=shown();const g=$('grid');g.innerHTML='';
+  let prev=null;
   list.forEach(o=>{
+    if(st.g==='all'&&o.group!==prev){
+      prev=o.group;
+      const h=document.createElement('div');h.className='gh'+(g.children.length?'':' first');
+      const cnt=list.filter(x=>x.group===o.group).length;
+      h.innerHTML='<b></b><small></small>';h.querySelector('b').textContent=I[LANG].g[o.group];h.querySelector('small').textContent=cnt;
+      g.appendChild(h);
+    }
     const [n,s]=label(o);
     const c=document.createElement('div');c.className='card';
     c.innerHTML=`<div class="pv${o.dark?' dk':''}">${svgOf(o,{clear:st.clear})}</div><div class="cap"><div class="nm"><b></b><small></small></div><button type="button" class="dl"></button></div>`;
