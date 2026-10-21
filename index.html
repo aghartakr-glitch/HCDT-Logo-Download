@@ -31,15 +31,16 @@ header .sub{color:var(--muted);font-size:13px;flex:1;min-width:200px}
 .tog input{accent-color:var(--accent);width:16px;height:16px}
 .zip{margin-left:auto;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:6px;padding:8px 16px;font-weight:700}
 .zip:disabled{opacity:.5;cursor:default}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;padding-top:22px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-top:22px}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
-.pv{height:230px;display:flex;align-items:center;justify-content:center;padding:24px;background:#fff}
+.pv{height:200px;display:flex;align-items:center;justify-content:center;padding:20px;background:#fff}
 .pv.dk{background:var(--navy)}
 .pv svg{width:100%;height:100%;display:block}
 .pv.dk+.cap{border-top-color:var(--navy)}
 .cap{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--line)}
 .cap .nm{flex:1;min-width:0}
-.cap b{display:block;font-size:13.5px}
+.cap b{display:block;font-size:13.5px;word-break:keep-all}
 .cap small{color:var(--muted);font-size:12px}
 .dl{border:1px solid var(--fg);background:#fff;border-radius:6px;padding:6px 14px;font-size:13px;font-weight:700;white-space:nowrap}
 .dl:hover{background:var(--fg);color:#fff}
@@ -50,7 +51,9 @@ header .sub{color:var(--muted);font-size:13px;flex:1;min-width:200px}
 .gh small{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
 .empty{padding:60px 0;text-align:center;color:var(--muted)}
 h2{font-size:15px;margin:38px 0 14px}
-.cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.cols{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+@media (max-width:1000px){.cols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .col{border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:12px}
 .col .sw{height:64px;background:var(--c)}
 .col div.t{padding:9px 12px;display:grid;gap:1px}
